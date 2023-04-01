@@ -301,6 +301,8 @@ class MPNNLayer(MessagePassing):
     def __repr__(self) -> str:
         return (f'{self.__class__.__name__}(emb_dim={self.emb_dim}, aggr={self.aggr})')
 
+    
+# credits: adapted from GDL labs
 class MPNNModel(Module):
     def __init__(self, num_layers=4, emb_dim=64, in_dim=11, edge_dim=4, out_dim=1):
 
@@ -322,6 +324,8 @@ class MPNNModel(Module):
         out = self.lin_pred(h_graph)
         return out.view(-1)
 
+    
+# credits: adapted from GDL labs
 class InvariantMPNNLayer(MessagePassing):
     def __init__(self, emb_dim=64, edge_dim=4, aggr='add'):
         super().__init__(aggr=aggr)
@@ -359,7 +363,7 @@ class InvariantMPNNLayer(MessagePassing):
     def __repr__(self) -> str:
         return (f'{self.__class__.__name__}(emb_dim={self.emb_dim}, aggr={self.aggr})')
 
-
+# credits: adapted from GDL labs
 class InvariantMPNNModel(MPNNModel):
     def __init__(self, num_layers=4, emb_dim=64, in_dim=11, edge_dim=4, out_dim=1):
         super().__init__()
